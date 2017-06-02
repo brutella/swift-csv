@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Tests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>swift-csv-tests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>swift-csv.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +23,16 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>106FE9ED1EE14F340061918B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>106FE9FB1EE14F500061918B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>106FEA071EE14F630061918B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

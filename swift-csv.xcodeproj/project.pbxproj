@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		106FE9F21EE14F340061918B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106FE9F11EE14F340061918B /* main.swift */; };
+		106FEA121EE14F900061918B /* CSVParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106FEA101EE14F900061918B /* CSVParserTest.swift */; };
+		106FEA131EE14F900061918B /* CSVWriterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106FEA111EE14F900061918B /* CSVWriterTest.swift */; };
+		106FEA151EE14F970061918B /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106FEA141EE14F970061918B /* CSV.swift */; };
+		106FEA161EE14F9B0061918B /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106FEA141EE14F970061918B /* CSV.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,10 +29,22 @@
 /* Begin PBXFileReference section */
 		106FE9EE1EE14F340061918B /* swift-csv */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "swift-csv"; sourceTree = BUILT_PRODUCTS_DIR; };
 		106FE9F11EE14F340061918B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		106FEA081EE14F630061918B /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		106FEA0C1EE14F630061918B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		106FEA101EE14F900061918B /* CSVParserTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSVParserTest.swift; sourceTree = "<group>"; };
+		106FEA111EE14F900061918B /* CSVWriterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSVWriterTest.swift; sourceTree = "<group>"; };
+		106FEA141EE14F970061918B /* CSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSV.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		106FE9EB1EE14F340061918B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		106FEA051EE14F630061918B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				106FE9F01EE14F340061918B /* swift-csv */,
+				106FEA091EE14F630061918B /* Tests */,
 				106FE9EF1EE14F340061918B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				106FE9EE1EE14F340061918B /* swift-csv */,
+				106FEA081EE14F630061918B /* Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,9 +75,20 @@
 		106FE9F01EE14F340061918B /* swift-csv */ = {
 			isa = PBXGroup;
 			children = (
+				106FEA141EE14F970061918B /* CSV.swift */,
 				106FE9F11EE14F340061918B /* main.swift */,
 			);
 			path = "swift-csv";
+			sourceTree = "<group>";
+		};
+		106FEA091EE14F630061918B /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				106FEA101EE14F900061918B /* CSVParserTest.swift */,
+				106FEA111EE14F900061918B /* CSVWriterTest.swift */,
+				106FEA0C1EE14F630061918B /* Info.plist */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -82,6 +111,23 @@
 			productReference = 106FE9EE1EE14F340061918B /* swift-csv */;
 			productType = "com.apple.product-type.tool";
 		};
+		106FEA071EE14F630061918B /* Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 106FEA0D1EE14F630061918B /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildPhases = (
+				106FEA041EE14F630061918B /* Sources */,
+				106FEA051EE14F630061918B /* Frameworks */,
+				106FEA061EE14F630061918B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tests;
+			productName = Tests;
+			productReference = 106FEA081EE14F630061918B /* Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -93,6 +139,11 @@
 				ORGANIZATIONNAME = "Matthias Hochgatterer";
 				TargetAttributes = {
 					106FE9ED1EE14F340061918B = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 3UMKW67674;
+						ProvisioningStyle = Automatic;
+					};
+					106FEA071EE14F630061918B = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 3UMKW67674;
 						ProvisioningStyle = Automatic;
@@ -112,16 +163,38 @@
 			projectRoot = "";
 			targets = (
 				106FE9ED1EE14F340061918B /* swift-csv */,
+				106FEA071EE14F630061918B /* Tests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		106FEA061EE14F630061918B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		106FE9EA1EE14F340061918B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				106FEA151EE14F970061918B /* CSV.swift in Sources */,
 				106FE9F21EE14F340061918B /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		106FEA041EE14F630061918B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				106FEA161EE14F9B0061918B /* CSV.swift in Sources */,
+				106FEA131EE14F900061918B /* CSVWriterTest.swift in Sources */,
+				106FEA121EE14F900061918B /* CSVParserTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +309,34 @@
 			};
 			name = Release;
 		};
+		106FEA0E1EE14F630061918B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3UMKW67674;
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = at.mah.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		106FEA0F1EE14F630061918B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3UMKW67674;
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = at.mah.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -253,6 +354,14 @@
 			buildConfigurations = (
 				106FE9F61EE14F340061918B /* Debug */,
 				106FE9F71EE14F340061918B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		106FEA0D1EE14F630061918B /* Build configuration list for PBXNativeTarget "Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				106FEA0E1EE14F630061918B /* Debug */,
+				106FEA0F1EE14F630061918B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
