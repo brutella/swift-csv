@@ -50,6 +50,39 @@ class TestParserDelegate: ParserDelegate {
     }
 }
 
+class PerformanceParserDelegate: ParserDelegate {
+	
+	internal var didBeginDocument: Bool = false
+	internal var didEndDocument: Bool = false
+	internal var didBeginLineIndex: UInt?
+	
+	func parserDidBeginDocument(_ parser: CSV.Parser) {
+		didBeginDocument = true
+	}
+	
+	func parserDidEndDocument(_ parser: CSV.Parser) {
+		didEndDocument = true
+	}
+	
+	func parser(_ parser: CSV.Parser, didBeginLineAt index: UInt) {
+		didBeginLineIndex = index
+	}
+	
+	func parser(_ parser: CSV.Parser, didEndLineAt index: UInt) {
+		guard let beginLineIndex = didBeginLineIndex else {
+			XCTFail()
+			return
+		}
+		XCTAssertEqual(beginLineIndex, index)
+	}
+	
+	func parser(_ parser: CSV.Parser, didReadFieldAt index: UInt, value: String) {
+		// do nothing
+		// we want the parser to run as fast as possible for testing
+	}
+}
+
+
 class CSVParser_Test: XCTestCase {
     
     func testQuotedFields() throws {
@@ -168,4 +201,27 @@ class CSVParser_Test: XCTestCase {
             }
         }
     }
+	
+	func testPerformance() {
+		self.measure {
+			let fileURL = Bundle(for: type(of: self)).url(forResource: "Reading Test Documents/semi-big-file", withExtension: "csv")!
+			let parser = CSV.Parser(url: fileURL, configuration: CSV.Configuration(delimiter: ","))!
+			let testDelegate = PerformanceParserDelegate()
+			parser.delegate = testDelegate
+			try! parser.parse()
+
+		}
+	}
+	
+	func testPerformanceIssues() {
+		self.measure {
+			let fileURL = Bundle(for: type(of: self)).url(forResource: "Reading Test Documents/postico-issues", withExtension: "csv")!
+			let parser = CSV.Parser(url: fileURL, configuration: CSV.Configuration(delimiter: ","))!
+			let testDelegate = PerformanceParserDelegate()
+			parser.delegate = testDelegate
+			try! parser.parse()
+		}
+	}
+
+
 }
