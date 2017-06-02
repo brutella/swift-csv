@@ -254,7 +254,7 @@ public struct CSV {
         
         /// Starts parsing the CSV data. Calling this method does nothing if the parser already finished parsing the data.
         ///
-        /// - Throws: An error if the data doesn't confrom to [RFC 4180](https://tools.ietf.org/html/rfc4180).
+        /// - Throws: An error if the data doesn't conform to [RFC 4180](https://tools.ietf.org/html/rfc4180).
         public func parse() throws {
             
             guard self.state != .endOfDocument && !cancelled else {
