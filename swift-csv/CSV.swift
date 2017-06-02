@@ -11,9 +11,9 @@ import Foundation
 public protocol ParserDelegate: class {
     func parserDidBeginDocument(_ parser: CSV.Parser)
     func parserDidEndDocument(_ parser: CSV.Parser)
-    func parser(_ parser: CSV.Parser, didBeginRowAt index: UInt)
-    func parser(_ parser: CSV.Parser, didEndRowAt index: UInt)
-    func parser(_ parser: CSV.Parser, didReadColumnAt index: UInt, value: String)
+    func parser(_ parser: CSV.Parser, didBeginLineAt index: UInt)
+    func parser(_ parser: CSV.Parser, didEndLineAt index: UInt)
+    func parser(_ parser: CSV.Parser, didReadFieldAt index: UInt, value: String)
 }
 
 extension String.Encoding {
@@ -173,9 +173,9 @@ public struct CSV {
                 case .endOfDocument:
                     delegate?.parserDidEndDocument(self)
                 case .beginningOfLine:
-                    delegate?.parser(self, didBeginRowAt: row)
+                    delegate?.parser(self, didBeginLineAt: row)
                 case .endOfLine:
-                    delegate?.parser(self, didEndRowAt: row)
+                    delegate?.parser(self, didEndLineAt: row)
                     column = 0
                     row += 1
                 case .endOfField:
@@ -190,9 +190,9 @@ public struct CSV {
                     
                     if !value.isEmpty && self.trimsWhitespaces {
                         let trimmed = value.trimmingCharacters(in: CharacterSet.whitespaces)
-                        delegate?.parser(self, didReadColumnAt: column, value: trimmed)
+                        delegate?.parser(self, didReadFieldAt: column, value: trimmed)
                     } else {
-                        delegate?.parser(self, didReadColumnAt: column, value: value)
+                        delegate?.parser(self, didReadFieldAt: column, value: value)
                     }
                     
                     column += 1

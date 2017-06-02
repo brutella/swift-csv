@@ -12,36 +12,41 @@ class TestParserDelegate: ParserDelegate {
     
     internal var didBeginDocument: Bool = false
     internal var didEndDocument: Bool = false
-    internal var didBeginRowIndex: UInt?
+    internal var didBeginLineIndex: UInt?
     
     internal var content = Array<[String]>()
-    internal var currentRowValues = Array<String>()
+    internal var currentFieldValues = Array<String>()
     
     func parserDidBeginDocument(_ parser: CSV.Parser) {
         didBeginDocument = true
+        print(#function)
     }
     
     func parserDidEndDocument(_ parser: CSV.Parser) {
         didEndDocument = true
+        print(#function)
     }
     
-    func parser(_ parser: CSV.Parser, didBeginRowAt index: UInt) {
-        didBeginRowIndex = index
-        currentRowValues.removeAll()
+    func parser(_ parser: CSV.Parser, didBeginLineAt index: UInt) {
+        didBeginLineIndex = index
+        currentFieldValues.removeAll()
+        print("\(#function) \(index)")
     }
     
-    func parser(_ parser: CSV.Parser, didEndRowAt index: UInt) {
-        guard let beginRowIndex = didBeginRowIndex else {
+    func parser(_ parser: CSV.Parser, didEndLineAt index: UInt) {
+        guard let beginLineIndex = didBeginLineIndex else {
             XCTFail()
             return
         }
         
-        XCTAssertEqual(beginRowIndex, index)
-        content.append(currentRowValues)
+        XCTAssertEqual(beginLineIndex, index)
+        content.append(currentFieldValues)
+        print("\(#function) \(index)")
     }
     
-    func parser(_ parser: CSV.Parser, didReadColumnAt index: UInt, value: String) {
-        currentRowValues.append(value)
+    func parser(_ parser: CSV.Parser, didReadFieldAt index: UInt, value: String) {
+        currentFieldValues.append(value)
+        print("\(#function) \(value)")
     }
 }
 
