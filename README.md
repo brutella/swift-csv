@@ -1,16 +1,14 @@
 # swift-csv
 
 `swift-csv` is a stream based CSV library written in Swift. It uses `InputStream` to parse a CSV file and `OutputStream` to write CSV data to a file.
-This way it doesn't keep everything in memory while working with big CSV files.
-
-`swift-csv` also supports [BOM](https://en.wikipedia.org/wiki/Byte_order_mark) for UTF-8, UTF-16 and UTF-32 text encodings.
+This way it doesn't keep everything in memory while working with big CSV files. It also supports [BOM](https://en.wikipedia.org/wiki/Byte_order_mark) for UTF-8, UTF-16 and UTF-32 text encodings.
 
 `swift-csv` is battle tested in the CSV import and export of [Finances](http://financesapp.net).
 
 # Features
 
 - Stream based CSV parser and writer
-- Complete documention
+- Complete documentation
 - Unit tested
 
 # Usage
@@ -27,7 +25,7 @@ let parser = CSV.Parser(inputStream: stream, configuration: configuration)
 try parser.parse()
 ```
 
-If you don't know the delimiter and encoding of the data, you can automatically detect it using
+If you don't know the delimiter and encoding of the data, you can automatically detect it.
 
 ```swift
 let url = ...

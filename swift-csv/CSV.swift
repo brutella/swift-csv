@@ -9,10 +9,20 @@
 import Foundation
 
 public protocol ParserDelegate: class {
+    
+    /// Called when the parser begins parsing.
     func parserDidBeginDocument(_ parser: CSV.Parser)
+    
+    /// Called when the parser finished parsing without errors.
     func parserDidEndDocument(_ parser: CSV.Parser)
+    
+    /// Called when the parser begins parsing a line.
     func parser(_ parser: CSV.Parser, didBeginLineAt index: UInt)
+    
+    /// Called when the parser finished parsing a line.
     func parser(_ parser: CSV.Parser, didEndLineAt index: UInt)
+    
+    /// Called for every field in a line.
     func parser(_ parser: CSV.Parser, didReadFieldAt index: UInt, value: String)
 }
 
@@ -85,6 +95,7 @@ public struct CSV {
             self.illegalCharacterSet = CharacterSet(charactersIn: "\(DoubleQuote)\(configuration.delimiter)\(CarriageReturn)\(LineFeed)")
         }
         
+        /// Writes fields as a line to the output stream.
         public func writeLine(of fields: [String]) throws {
             if let count = self.maxNumberOfWrittenFields {
                 if count != fields.count {
@@ -426,6 +437,7 @@ public struct CSV {
         public let delimiter: UnicodeScalar
         public let encoding: String.Encoding
         
+        /// Returns a configuration by detecting the delimeter and text encoding from a file at an url.
         public static func detectConfigurationForContentsOfURL(_ url: URL) -> Configuration? {
             guard let stream = InputStream(url: url) else {
                 return nil
@@ -434,6 +446,7 @@ public struct CSV {
             return self.detectConfigurationForInputStream(stream)
         }
         
+        /// Returns a configuration by detecting the delimeter and text encoding from the CSV input stream.
         public static func detectConfigurationForInputStream(_ stream: InputStream) -> Configuration? {
             if stream.streamStatus == .notOpen {
                 stream.open()
@@ -479,6 +492,7 @@ public struct CSV {
             return self.detectConfigurationForString(header as String, encoding: encoding)
         }
         
+        /// Returns a configuration by detecting the delimeter and text encoding from a CSV string.
         public static func detectConfigurationForString(_ string: String, encoding: String.Encoding) -> Configuration {
             struct Delimiter {
                 let scalar: UnicodeScalar
@@ -495,6 +509,7 @@ public struct CSV {
             return Configuration(delimiter: winner.scalar, encoding: encoding)
         }
         
+        /// Initializes a configuration with a delimiter and text encoding.
         public init(delimiter: UnicodeScalar, encoding: String.Encoding = .utf8) {
             self.delimiter = delimiter
             self.encoding = encoding
