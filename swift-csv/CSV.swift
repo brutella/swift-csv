@@ -521,7 +521,7 @@ internal class BufferedByteReader {
     let inputStream: InputStream
     var isAtEnd = false
     var buffer = [UInt8]()
-    var temp = [UInt8](repeating: 0, count: 100)
+	var bufferIndex = 0
     
     init(inputStream: InputStream) {
         if inputStream.streamStatus == .notOpen {
@@ -532,48 +532,40 @@ internal class BufferedByteReader {
     }
     
     /// - returns: The next character and removes it from the stream after it has been returned, or nil if the stream is at the end.
-    func pop() -> UInt8? {
-        readIfNecessary()
-        
-        if buffer.count > 0 {
-            return buffer.remove(at: 0)
-        } else {
-            isAtEnd = true
-        }
-        
-        return nil
-    }
-    
-    /// - returns: The next character without removing it from the stream, or nil if the stream is at the end.
-    func peek() -> UInt8? {
-        return self.peek(at: 0)
-    }
-    
-    /// - Parameter index: The index at which a character should be returned from the stream.
-    /// - Returns: The character at `index`, or nil if the stream is at the end.
-    func peek(at index: Int) -> UInt8? {
-        readIfNecessary()
-        
-        if index < buffer.count {
-            return buffer[index]
-        }
-        
-        return nil
-    }
-    
+	func pop() -> UInt8? {
+		guard let byte = self.peek() else {
+			isAtEnd = true
+			return nil
+		}
+		bufferIndex += 1
+		return byte
+	}
+	
+	/// - Returns: The character at `index`, or nil if the stream is at the end.
+	func peek(at index: Int = 0) -> UInt8? {
+		let peekIndex = bufferIndex + index
+		guard peekIndex < buffer.count else {
+			guard read(100) > 0 else {
+				// end of file or error
+				return nil
+			}
+			return self.peek(at:index)
+		}
+		return buffer[peekIndex]
+	}
+	
     // MARK: - Private
-    
-    private func readIfNecessary() {
-        if buffer.count < 10 {
-            let _ = self.read()
-        }
-    }
-    
-    private func read() -> Int {
+	
+	private func read(_ amount: Int) -> Int {
+		if bufferIndex > 0 {
+			buffer.removeFirst(bufferIndex)
+			bufferIndex = 0
+		}
+		var temp = [UInt8](repeating: 0, count: amount)
         let length = inputStream.read(&temp, maxLength: temp.count)
-        let slice = Array(temp[0..<length])
-        buffer.append(contentsOf: slice)
-        
+		if length > 0 {
+			buffer.append(contentsOf: temp[0..<length])
+		}
         return length
     }
 }

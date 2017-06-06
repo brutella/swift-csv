@@ -12,6 +12,7 @@
 		106FEA131EE14F900061918B /* CSVWriterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106FEA111EE14F900061918B /* CSVWriterTest.swift */; };
 		106FEA151EE14F970061918B /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106FEA141EE14F970061918B /* CSV.swift */; };
 		106FEA161EE14F9B0061918B /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106FEA141EE14F970061918B /* CSV.swift */; };
+		364316631EE1C34800C879E6 /* Reading Test Documents in Resources */ = {isa = PBXBuildFile; fileRef = 364316621EE1C34800C879E6 /* Reading Test Documents */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,7 @@
 		106FEA101EE14F900061918B /* CSVParserTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSVParserTest.swift; sourceTree = "<group>"; };
 		106FEA111EE14F900061918B /* CSVWriterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSVWriterTest.swift; sourceTree = "<group>"; };
 		106FEA141EE14F970061918B /* CSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSV.swift; sourceTree = "<group>"; };
+		364316621EE1C34800C879E6 /* Reading Test Documents */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Reading Test Documents"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			children = (
 				106FEA101EE14F900061918B /* CSVParserTest.swift */,
 				106FEA111EE14F900061918B /* CSVWriterTest.swift */,
+				364316621EE1C34800C879E6 /* Reading Test Documents */,
 				106FEA0C1EE14F630061918B /* Info.plist */,
 			);
 			path = Tests;
@@ -173,6 +176,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				364316631EE1C34800C879E6 /* Reading Test Documents in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
