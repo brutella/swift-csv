@@ -532,34 +532,28 @@ internal class BufferedByteReader {
     }
     
     /// - returns: The next character and removes it from the stream after it has been returned, or nil if the stream is at the end.
-    func pop() -> UInt8? {
-		while bufferIndex >= buffer.count {
-			if read(100) == 0 {
-				isAtEnd = true
-				return nil
-			}
+	func pop() -> UInt8? {
+		guard let byte = self.peek() else {
+			isAtEnd = true
+			return nil
 		}
-		let x = buffer[bufferIndex]
 		bufferIndex += 1
-		return x
-    }
-    
-    /// - returns: The next character without removing it from the stream, or nil if the stream is at the end.
-    func peek() -> UInt8? {
-        return self.peek(at: 0)
-    }
-    
-    /// - Parameter index: The index at which a character should be returned from the stream.
-    /// - Returns: The character at `index`, or nil if the stream is at the end.
-    func peek(at peekIndex: Int) -> UInt8? {
-		while bufferIndex + peekIndex >= buffer.count {
-			if read(bufferIndex + peekIndex + 1 - buffer.count) == 0 {
+		return byte
+	}
+	
+	/// - Returns: The character at `index`, or nil if the stream is at the end.
+	func peek(at index: Int = 0) -> UInt8? {
+		let peekIndex = bufferIndex + index
+		guard peekIndex < buffer.count else {
+			guard read(100) > 0 else {
+				// end of file or error
 				return nil
 			}
+			return self.peek(at:index)
 		}
-		return buffer[bufferIndex + peekIndex]
-    }
-    
+		return buffer[peekIndex]
+	}
+	
     // MARK: - Private
 	
 	private func read(_ amount: Int) -> Int {
@@ -569,8 +563,9 @@ internal class BufferedByteReader {
 		}
 		var temp = [UInt8](repeating: 0, count: amount)
         let length = inputStream.read(&temp, maxLength: temp.count)
-        let slice = Array(temp[0..<length])
-        buffer.append(contentsOf: slice)
+		if length > 0 {
+			buffer.append(contentsOf: temp[0..<length])
+		}
         return length
     }
 }
