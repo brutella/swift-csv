@@ -190,7 +190,7 @@ public struct CSV {
                     column = 0
                     row += 1
                 case .endOfField:
-                    let data = Data(bytes: fieldBuffer)
+                    let data = Data(fieldBuffer)
                     let value: String
                     if let string = String(data: data, encoding: configuration.encoding) { // Try to decode using the specified encoding
                         value = string
