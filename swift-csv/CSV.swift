@@ -133,9 +133,11 @@ public struct CSV {
         
         internal func writeString(_ string: String) {
             if let data = string.data(using: configuration.encoding) {
-                let _ = data.withUnsafeBytes({
-                    bytes in
-                    self.outputStream.write(bytes, maxLength: data.count)
+                data.withUnsafeBytes({
+                    (pointer: UnsafeRawBufferPointer) -> Void in
+                    if let bytes = pointer.bindMemory(to: UInt8.self).baseAddress {
+                        self.outputStream.write(bytes, maxLength: pointer.count)
+                    }
                 })
             }
         }
@@ -521,7 +523,7 @@ internal class BufferedByteReader {
     let inputStream: InputStream
     var isAtEnd = false
     var buffer = [UInt8]()
-	var bufferIndex = 0
+    var bufferIndex = 0
     
     init(inputStream: InputStream) {
         if inputStream.streamStatus == .notOpen {
