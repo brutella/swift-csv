@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10175E5A23604822004F48C4 /* CSV.h in Headers */ = {isa = PBXBuildFile; fileRef = 10175E5823604822004F48C4 /* CSV.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		10175E5E2360482A004F48C4 /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106FEA141EE14F970061918B /* CSV.swift */; };
 		106FE9F21EE14F340061918B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106FE9F11EE14F340061918B /* main.swift */; };
 		106FEA121EE14F900061918B /* CSVParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106FEA101EE14F900061918B /* CSVParserTest.swift */; };
 		106FEA131EE14F900061918B /* CSVWriterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106FEA111EE14F900061918B /* CSVWriterTest.swift */; };
@@ -28,6 +30,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		10175E5623604822004F48C4 /* CSV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CSV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		10175E5823604822004F48C4 /* CSV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSV.h; sourceTree = "<group>"; };
+		10175E5923604822004F48C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		106FE9EE1EE14F340061918B /* swift-csv */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "swift-csv"; sourceTree = BUILT_PRODUCTS_DIR; };
 		106FE9F11EE14F340061918B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		106FEA081EE14F630061918B /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,6 +44,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		10175E5323604822004F48C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		106FE9EB1EE14F340061918B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -56,11 +68,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10175E5723604822004F48C4 /* CSV */ = {
+			isa = PBXGroup;
+			children = (
+				10175E5823604822004F48C4 /* CSV.h */,
+				10175E5923604822004F48C4 /* Info.plist */,
+			);
+			path = CSV;
+			sourceTree = "<group>";
+		};
 		106FE9E51EE14F340061918B = {
 			isa = PBXGroup;
 			children = (
 				106FE9F01EE14F340061918B /* swift-csv */,
 				106FEA091EE14F630061918B /* Tests */,
+				10175E5723604822004F48C4 /* CSV */,
 				106FE9EF1EE14F340061918B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,6 +92,7 @@
 			children = (
 				106FE9EE1EE14F340061918B /* swift-csv */,
 				106FEA081EE14F630061918B /* Tests.xctest */,
+				10175E5623604822004F48C4 /* CSV.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,7 +119,36 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		10175E5123604822004F48C4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10175E5A23604822004F48C4 /* CSV.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		10175E5523604822004F48C4 /* CSV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10175E5B23604822004F48C4 /* Build configuration list for PBXNativeTarget "CSV" */;
+			buildPhases = (
+				10175E5123604822004F48C4 /* Headers */,
+				10175E5223604822004F48C4 /* Sources */,
+				10175E5323604822004F48C4 /* Frameworks */,
+				10175E5423604822004F48C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CSV;
+			productName = CSV;
+			productReference = 10175E5623604822004F48C4 /* CSV.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		106FE9ED1EE14F340061918B /* swift-csv */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 106FE9F51EE14F340061918B /* Build configuration list for PBXNativeTarget "swift-csv" */;
@@ -141,6 +193,11 @@
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Matthias Hochgatterer";
 				TargetAttributes = {
+					10175E5523604822004F48C4 = {
+						CreatedOnToolsVersion = 11.2;
+						DevelopmentTeam = 3UMKW67674;
+						ProvisioningStyle = Automatic;
+					};
 					106FE9ED1EE14F340061918B = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 3UMKW67674;
@@ -170,11 +227,19 @@
 			targets = (
 				106FE9ED1EE14F340061918B /* swift-csv */,
 				106FEA071EE14F630061918B /* Tests */,
+				10175E5523604822004F48C4 /* CSV */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		10175E5423604822004F48C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		106FEA061EE14F630061918B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -186,6 +251,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		10175E5223604822004F48C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10175E5E2360482A004F48C4 /* CSV.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		106FE9EA1EE14F340061918B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -208,6 +281,70 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		10175E5C23604822004F48C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 3UMKW67674;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = CSV/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = at.mah.CSV;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		10175E5D23604822004F48C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 3UMKW67674;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = CSV/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = at.mah.CSV;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		106FE9F31EE14F340061918B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -368,6 +505,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		10175E5B23604822004F48C4 /* Build configuration list for PBXNativeTarget "CSV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10175E5C23604822004F48C4 /* Debug */,
+				10175E5D23604822004F48C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		106FE9E91EE14F340061918B /* Build configuration list for PBXProject "swift-csv" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
