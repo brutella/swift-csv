@@ -474,6 +474,7 @@ public struct CSV {
                 string = decoded
             } else if let macOSRoman = String(bytes: buffer, encoding: .macOSRoman) {
                 string = macOSRoman
+                encoding = .macOSRoman
             } else {
                 return nil
             }
