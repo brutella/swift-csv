@@ -464,13 +464,9 @@ public struct CSV {
             
             var encoding: String.Encoding = .utf8
             
-            if length > 4 {
-                if let bom = String.Encoding.BOM(bom0: buffer[0], bom1: buffer[1], bom2: buffer[2], bom3: buffer[3]) {
-                    encoding = bom.encoding
-                    if bom.length > 0 {
-                        buffer.removeFirst(bom.length)
-                    }
-                }
+            if length > 4, let bom = String.Encoding.BOM(bom0: buffer[0], bom1: buffer[1], bom2: buffer[2], bom3: buffer[3]) {
+                encoding = bom.encoding
+                buffer.removeFirst(bom.length)
             }
             
             let string: String
